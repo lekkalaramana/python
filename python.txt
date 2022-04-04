@@ -1,0 +1,519 @@
+Python:
+======
+
+we can import any module using import keyword
+
+import math
+
+we can call object.attribute_name
+
+math.attribute_name
+
+To rename import module
+
+from math import factorial as fac
+
+Scalar types
+-------------
+
+Int
+
+int(5) ---> 5
+
+int("453") ---> 453
+
+
+
+Float
+
+float(34) ---> 34.0
+
+float(343.34) ---> 343.34
+
+float('343') ---> 343.0
+
+None
+
+a = None
+>> None ---> It won't result any value
+
+>> a is None
+>> true
+
+Bool
+
+Boolean logical values
+
+>> bool(1)
+>> true
+
+>> bool(0)
+>> false
+
+while adding indentation we need to add four spaces
+
+>> if True:
+>>     print("Hello, print True")
+
+
+>> a = 25
+
+>> if a > 50:
+>>     print("Greater than 50")
+>> elif a < 20:
+>>     print("Less than 20")
+>> else:
+>>     print("Between 20 and 50")
+
+
+
+while loop:
+-----------
+
+while expression:
+    block
+
+a = 4
+while a != 0
+   print(a)
+   a -= 1
+
+
+while with break statement
+
+while True:
+    response = input()
+    if int(response) % 3 == 0:
+        break
+
+Strings, collection
+--------------------
+
+str it is a normal string data type
+
+a = "Hi this is Ramana"
+a.split() ---> ["Hi", "this", "is", "Ramana"]
+
+bytes
+
+a = b'some text'
+>> a
+>> b'some text'
+
+a.split() --> [b'some', b'text']
+
+
+to convert str to bytes and bytes to str
+
+we need to encode and decode the result
+
+result = "This is to test the result \ i can use \\ back slashes"
+
+encode = result.encode('utf8')
+>> encode
+>> It will result bytes info
+
+if we decode the result again it will result str result
+
+cities = {'spsrnellore': 'nellore', 'Prakasham': 'Ongole', 'Krishna': 'Vijayawada'}
+
+for city in cities:
+    print(city, cities[city])
+
+To list out all the lines from a txt file
+
+>> from urllib.request import urlopen
+>> story = urlopen('https://example.com/t.txt')
+>> story_words = []
+>> for line in story:
+>>     line_words = line.split()
+>>     for word in line_words:
+>>         story_words.append(word)
+>> story.close()
+>> story_words
+
+from above code we will get bytes values, to make sure to avoid bytes values we need to decode the data
+
+>> for line in story:
+>>     line_words = line.decode('utf8').split()
+>>     for word in line_words:
+>>         story_words.append(word)
+>> story.close()
+>> story_words
+
+dunder name:
+-----------
+
+__name__  ---> we call it as dunder name
+
+comments in python:
+------------------
+
+we will use tripple strings and hash(#) notation for comments
+
+to locate the particular verstion of the python we will use shebang for notation
+
+#! /usr/bin/env python3
+
+Generally in python module is executed once, on first import
+
+triple code multilined strings we call it as docstrings
+
+Program loaders can use #! to determine which python to run
+
+
+Python Object model:
+-------------------
+
+id(): returns a uniq integer identifier for an object that is constant for the life of the object.
+
+To test two references to the same object we will use id()
+
+a = 45
+
+>> id(a)
+>> 2037836400
+
+b = 4
+>> id(b)
+>> 2037835744
+
+b = a
+id(b)
+2037836400
+
+so here a == b will give u true
+
+Python has named references to objects.
+
+lists are mutable objects
+
+a = [2,3,4]
+b = a
+b ---> [2,3,4]
+
+b[1] = 30
+b ---> [2,30,4]
+
+a ---> [2,30,4]
+
+while adding lists to variables, If we add same list to two different variables
+
+a = [2,3,4]
+b = [2,3,4]
+
+a == b ---> true
+
+but, a is b ---> false
+because object is different but value is same
+
+
+while using default values always use immutable objects.
+
+def add_value(arr=[]):
+    arr.append('default')
+    return arr
+
+Scopes in python:
+----------------
+
+Local  Inside the current function
+Enclosing Inside enclosing functions
+Global At the top level of the module
+Built-in  In the special builtins module
+
+LEGB
+
+Global
+--------
+
+Rebind global names into a local namespace.
+
+count = 0
+def show_count():
+    print(count)
+
+def set_count(arg):
+    count = arg
+
+
+Everything is Object:
+--------------------
+
+import words
+>> type(words)
+<class 'module'>
+
+>> dir(words)
+['__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', ....defined methods]
+
+>> dir(words.fetch_words)
+
+
+Built-in collections:
+=====================
+
+str, list, dict
+
+int, float, complex
+
+tuple, range, set
+
+Protocols that unite collections
+
+Tuples: (tuple)
+------
+
+Immutable sequences of arbitrary objects
+
+a = (34, 3434, "Norway", 433)
+
+>> a[1]
+3434
+
+b = (33)
+>> type(b)
+<class 'int'>
+
+b = (33,)
+>> type(b)
+<class 'tuple'>
+
+>> 5 in (3,435,5, 345,334)
+true
+
+>> 5 not in (4,3,7)
+true
+
+a = 'Hi'
+b = "Hello"
+
+a, b = b, a ---> swapping
+
+Strings: (str)
+--------
+
+len('dfafagfhgafgaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+
+Strings are immutable. You can not modify them in place.
+
+str.join()
+
+>> ';'.join(['a','b','c'])
+'a;b;c'
+
+str.split(';')
+
+str.partition('anystring')
+
+str.format('Abc', 2)
+
+>> 'The age of {0} is {1}'.format('Abc',3)
+The age of Abc is 3
+
+f-strings:
+=========
+
+f strings will evaluate strings with interpolation with out any methods
+
+a = 343
+
+>> f'The age of Abc is {a}'
+The age of Abc is 343
+
+
+Range():
+=======
+
+range(stop), ---> range(3) --> [0,1,2]
+
+range(start, stop) --> range(3,10) --> [3,4,5,6,7,8,9]
+
+range(start, stop, step) --> range(0,10,2) --> [0,2,4,6,8]
+
+
+enumerate:
+==========
+
+Constructs an iterable of (index, value) tuples around another iterable object
+
+a = [11,22,33]
+
+>> for i in enumerate(a):
+        print(i)
+
+(0,11)
+(1,22)
+(2,33)
+
+Lists:
+======
+
+slicing:
+--------
+syntax: a_list[start:stop]
+
+a = "Hi this is Ramana".split()
+a = ["Hi", 'this', 'is', 'Ramana']
+
+a.index('this')
+
+a.count('this')
+
+2 in [2,3,4,5,5,6]
+
+7 not in [434, 343,3434,3223, 7665]
+
+del:
+----
+
+Remove an element from a list by index.
+
+syntax: del a_list[index]
+
+del a[3]
+
+a.remove('this')
+
+del a[a.index('this')]
+
+To insert new item in the list
+
+list.insert(2, 'check') ---> It will add check string at 2 index of this list
+
+a.reverse()
+
+a.sort()
+
+Dictionaries:
+=============
+
+names_and_ages = [('a', 20), ('b', 21), ('c', 22)]
+d = dict(names_and_ages)
+
+a = dict(a="aaa", b='bbb', c='ccc')
+
+a.update({'a': 'abc', 'd': 'dddd'})
+
+
+To list all the values from a dict, a.values()
+
+a in d
+del a['a']
+
+
+from pprint import pprint as pp
+
+Set:
+===
+
+Unordered collection of unique elements.
+sets are mutable.
+Elements in a set must be immutable.
+
+a = {3,5,6,7,8,9,9}
+
+for i in a:
+   print(i)
+
+3
+5
+6
+7
+8
+9
+9
+
+5 in a
+
+7 not in a
+
+a.add(98)
+
+a.update([7,33,55,66])
+
+a.remove(7)
+
+If any element not present in set and if try to remove that it will give u error
+
+Use discard() method
+
+a.discard()
+
+b = {4,46,7}
+
+a.union(b)
+
+a.union(b) == b.union(a)
+
+a.intersection(b)
+
+a.difference(b)
+
+
+symmetric_difference:
+--------------------
+
+a.symmetric_difference(b) ---> collects out of common elements from a and b
+
+a.issubset(b)
+
+a.issuperset(b)
+
+a.isdisjoint(b)
+
+
+Mutable sequence ---> list
+Mutable Set --------> set
+Mutable Mapping ----> dict
+
+
+Exception Concept:
+==================
+
+ REPL ---> read, execute, print, loop
+
+
+DIGIT_MAP = {
+    'zero': '0',
+    'one': '1',
+    'two': '2',
+    'three': '3',
+    'four': '4',
+    'five': '5',
+    'six': '6',
+    'seven': '7',
+    'eight': '8',
+    'nine': '9'
+}
+
+def convert(s):
+    """Convert a string to an integer."""
+    num = -1
+    try:
+        number = ''
+        for token in s:
+            number += DIGIT_MAP[token]
+        num = int(number)
+        print(f"Conversion succeeded! num = {num}")
+    except (KeyError, TypeError):
+        print("Conversion failed!")
+    return num
+
+generally in exception block we will use 'pass' keyword means it is no-op
+
+
+even we can modify except block like below
+
+ def convert(s):
+    """Convert a string to an integer."""
+    num = -1
+    try:
+        number = ''
+        for token in s:
+            number += DIGIT_MAP[token]
+        num = int(number)
+        print(f"Conversion succeeded! num = {num}")
+    except (KeyError, TypeError):
+        print("Conversion failed!")
+    return num
